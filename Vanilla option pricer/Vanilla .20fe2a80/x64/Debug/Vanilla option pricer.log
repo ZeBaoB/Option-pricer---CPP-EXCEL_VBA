@@ -1,0 +1,7 @@
+﻿  pricer.cpp
+C:\Users\Billn\Documents\M2QF\C plus plus\Project\Vanilla option pricer\pricer.cpp(8,8): warning C4273: 'computePriceAndPartialDerivates' : liaison DLL incohérente
+  (compiler le fichier source '/pricer.cpp')
+      C:\Users\Billn\Documents\M2QF\C plus plus\Project\Vanilla option pricer\pricer.h(7,39):
+      voir la définition précédente de « computePriceAndPartialDerivates »
+  
+  Vanilla option pricer.vcxproj -> C:\Users\Billn\Documents\M2QF\C plus plus\Project\Vanilla option pricer\x64\Debug\Vanilla option pricer.dll
