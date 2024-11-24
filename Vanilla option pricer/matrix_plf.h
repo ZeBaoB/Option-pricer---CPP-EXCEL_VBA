@@ -1,5 +1,7 @@
 #pragma once
 #include "matrix.h"
+//Matrix for partial linear function
+
 class matrix_plf :
     public matrix
 {
@@ -20,4 +22,3 @@ public:
 	matrix_plf shift_value(double delta);
 	double integral(double t, double T) const;
 };
-

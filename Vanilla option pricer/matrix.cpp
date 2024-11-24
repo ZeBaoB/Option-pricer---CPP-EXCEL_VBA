@@ -1,84 +1,55 @@
 #include "pch.h"
 #include "matrix.h"
-#include <iostream>
 
 // Assignment operator
 matrix& matrix::operator=(const matrix& m) {
-    if (this == &m) {
-        return *this;  // Check for self-assignment
-    }
-    delete[] data_;
-
-    int nl = m.get_number_of_lines();
-    int nc = m.get_number_of_columns();
-
-    M_ = nl;
-    N_ = nc;
-
-    data_ = new double[nl * nc];
-
-    // Copy data from the source matrix
-    for (int i = 0; i < nl * nc; ++i) {
-        data_[i] = m.data_[i];
+    if (this != &m) {
+        M_ = m.M_;
+        N_ = m.N_;
+        data_ = m.data_;
     }
     return *this;
 }
 
 // Element access operators (1-based indexing)
-double matrix::operator()(int l, int c) const {
-    return data_[(l - 1) * N_ + (c - 1)];
+long double matrix::operator()(int l, int c) const {
+    if (l < 1 || l > M_ || c < 1 || c > N_)
+        throw std::out_of_range("Index out of bounds");
+    return data_[l - 1][c - 1]; // Adjust for 1-based indexing
 }
 
-double& matrix::operator()(int l, int c) {
-    return data_[(l - 1) * N_ + (c - 1)];
+long double& matrix::operator()(int l, int c) {
+    if (l < 1 || l > M_ || c < 1 || c > N_)
+        throw std::out_of_range("Index out of bounds");
+    return data_[l - 1][c - 1]; // Adjust for 1-based indexing
 }
 
 // Fill a line with a given value (1-based indexing)
-matrix& matrix::fill_line(int i, double alpha) {
-    if (i < 1 || i > M_) {
-        throw std::out_of_range("Line index out of range");
-    }
-    for (int j = 1; j <= N_; ++j) {
-        (*this)(i, j) = alpha;
-    }
+matrix& matrix::fill_line(int i, long double alpha) {
+    if (i < 1 || i > M_) throw std::out_of_range("Line index out of bounds");
+    for (int j = 0; j < N_; ++j) data_[i - 1][j] = alpha;
     return *this;
 }
 
 // Fill a column with a given value (1-based indexing)
-matrix& matrix::fill_column(int j, double alpha) {
-    if (j < 1 || j > N_) {
-        throw std::out_of_range("Column index out of range");
-    }
-    for (int i = 1; i <= M_; ++i) {
-        (*this)(i, j) = alpha;
-    }
+matrix& matrix::fill_column(int j, long double alpha) {
+    if (j < 1 || j > N_) throw std::out_of_range("Column index out of range");
+    for (int i = 0; i < M_; ++i) data_[i][j - 1] = alpha;
     return *this;
 }
 
-// Add one line to another with a multiplier (1-based indexing)
-matrix& matrix::add_line_to_line(int i1, double alpha, int i2) {
-    if (i1 < 1 || i1 > M_ || i2 < 1 || i2 > M_) {
-        throw std::out_of_range("Line index out of range");
-    }
-    for (int j = 1; j <= N_; ++j) {
-        (*this)(i1, j) += alpha * (*this)(i2, j);
+// Add a scaled version of one row to another
+matrix& matrix::add_line_to_line(int i1, long double alpha, int i2) {
+    if (i1 < 1 || i1 > M_ || i2 < 1 || i2 > M_)
+        throw std::out_of_range("Line index out of bounds");
+    for (int j = 0; j < N_; ++j) {
+        data_[i1 - 1][j] += alpha * data_[i2 - 1][j];
     }
     return *this;
-}
-
-matrix matrix::transpose()
-{
-    int nl = get_number_of_columns();
-    int nc = get_number_of_lines();
-
-    matrix m = matrix(nl, nc);
-    for (int i = 1; i <= nl; ++i) { for (int j = 1; j <= nc; ++j) { m(i, j) = (*this)(j, i); } }
-
-    return m;
 }
 
 // Scalar multiplication (1-based indexing)
-matrix operator*(const double k, const matrix& M1) {
+matrix operator*(const long double k, const matrix& M1) {
     matrix m(M1.get_number_of_lines(), M1.get_number_of_columns());
     for (int i = 1; i <= m.get_number_of_lines(); ++i) {
         for (int j = 1; j <= m.get_number_of_columns(); ++j) {

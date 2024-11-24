@@ -1,7 +1,8 @@
 #pragma once
 #include "matrix.h"
+
 class matrix_tridiagonal :
-    public matrix
+	public matrix
 {
 private:
 	matrix::matrix;
@@ -16,6 +17,7 @@ public:
 			matrix::operator()(i, i - 1) = diagInf[i - 2];
 		}
 	}
+	matrix gauss_saidel(matrix b, matrix x0) const;
 	matrix inverse() const;
-};
 
+};

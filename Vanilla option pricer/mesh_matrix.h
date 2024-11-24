@@ -5,7 +5,7 @@
 #include <cmath>
 
 class mesh_matrix :
-    public matrix
+	public matrix
 {
 private:
 	matrix::matrix;
@@ -35,9 +35,8 @@ public:
 	double retrieve_OptionValue(double s0, int line = 1);
 	double retrieve_delta(double s0);
 	double retrieve_gamma(double s0);
-	double retrieve_theta(double s0); // % t
+	double retrieve_theta(double s0); // %time
 
-	double retrieve_rho(bool call, bool european, matrix_plf r_table, double sigma, double s0); // %r
+	double retrieve_rho(bool call, bool european, matrix_plf r_table, double sigma, double s0); // %return
 	double retrieve_vega(bool call, bool european, matrix_plf r_table, double sigma, double s0); // %sigma
 };
-

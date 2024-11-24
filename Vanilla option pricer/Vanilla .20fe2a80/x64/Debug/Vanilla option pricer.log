@@ -1,7 +1,19 @@
-﻿  pricer.cpp
+﻿  matrix.cpp
+  matrix_plf.cpp
+  matrix_tridiagonal.cpp
+  mesh_matrix.cpp
+C:\Users\Billn\Documents\M2QF\C plus plus\Project\Vanilla option pricer\mesh_matrix.cpp(107,20): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+  (compiler le fichier source '/mesh_matrix.cpp')
+  
+C:\Users\Billn\Documents\M2QF\C plus plus\Project\Vanilla option pricer\mesh_matrix.cpp(108,24): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+  (compiler le fichier source '/mesh_matrix.cpp')
+  
+  pricer.cpp
 C:\Users\Billn\Documents\M2QF\C plus plus\Project\Vanilla option pricer\pricer.cpp(8,8): warning C4273: 'computePriceAndPartialDerivates' : liaison DLL incohérente
   (compiler le fichier source '/pricer.cpp')
       C:\Users\Billn\Documents\M2QF\C plus plus\Project\Vanilla option pricer\pricer.h(7,39):
       voir la définition précédente de « computePriceAndPartialDerivates »
   
+  Génération de code en cours...
+C:\Users\Billn\Documents\M2QF\C plus plus\Project\Vanilla option pricer\matrix_plf.cpp(26,1): warning C4715: 'matrix_plf::operator()' : les chemins de contrôle ne retournent pas tous une valeur
   Vanilla option pricer.vcxproj -> C:\Users\Billn\Documents\M2QF\C plus plus\Project\Vanilla option pricer\x64\Debug\Vanilla option pricer.dll

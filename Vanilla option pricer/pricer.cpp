@@ -30,7 +30,8 @@ double computePriceAndPartialDerivates(
 
     mesh_matrix m_matrix(maturity, S0, strike, spot_mesh_params, time_mesh_params, sinf);
     
-    m_matrix.solve(isCall, isEuropean, returnTable, sigma);
+    m_matrix.solve(isCall, isEuropean, returnTable, sigma); //
+
 
     double ds = sinf / (spot_mesh_params - 1);
 
