@@ -24,7 +24,7 @@ double computePriceAndPartialDerivates(
     int size,              // Size of the r table (number of time steps)
     double sigma)
 {
-    double sinf = S0 * 5;
+    double sinf = S0 * 3;
 
     matrix_plf returnTable = matrix_plf(time_steps, r_values, size);
 
