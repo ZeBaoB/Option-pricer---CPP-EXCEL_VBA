@@ -61,24 +61,18 @@ Function lengthReturnTable(rng As Range, maxval As Double) As Integer
     lengthReturnTable = lengthStepArray
 End Function
 
-Function GetSteps(rng As Range, lengthStepArray As Integer) As Variant
+Function GetSteps(rng As Range, T0 As Long) As Variant
     Dim stepArray() As Double
     Dim i As Integer
     Dim currentValue As Double
-            
-    ' Check that the range starts with 0 and lengthStepArray != 0
-    If rng.Cells(1, 1).Value <> 0 Or lengthStepArray = 0 Then
-        GetSteps = CVErr(xlErrValue)
-        Exit Function
-    End If
     
     ' Initialize the array to hold step values
-    ReDim stepArray(1 To lengthStepArray)
+    ReDim stepArray(1 To rng.Columns.Count)
     
     ' Populate the array and check for ordering
     currentValue = -1#
-    For i = 1 To lengthStepArray
-        stepArray(i) = rng.Cells(1, i).Value
+    For i = 1 To rng.Columns.Count
+        stepArray(i) = (Int(CDbl(rng.Cells(1, i).Value)) - T0) / 365
         If stepArray(i) <= currentValue Then
             GetSteps = CVErr(xlErrValue)  ' Return an error if the values are not in strickly ascending order
             Exit Function
@@ -90,7 +84,7 @@ Function GetSteps(rng As Range, lengthStepArray As Integer) As Variant
     GetSteps = stepArray
 End Function
 
-Function GetReturnsValue(rng As Range, lengthStepArray As Integer) As Variant
+Function GetReturnsValue(rng As Range) As Variant
     Dim returnsArray() As Double
     Dim i As Integer
     
@@ -101,10 +95,10 @@ Function GetReturnsValue(rng As Range, lengthStepArray As Integer) As Variant
     End If
         
     ' Initialize the array to hold step values
-    ReDim returnsArray(1 To lengthStepArray)
+    ReDim returnsArray(1 To rng.Columns.Count)
     
     ' Populate the array
-    For i = 1 To lengthStepArray
+    For i = 1 To rng.Columns.Count
         returnsArray(i) = rng.Cells(2, i).Value
     Next i
     
