@@ -23,6 +23,7 @@ double matrix_plf::operator()(double t) const {
             }
         }
     }
+    return matrix::operator()(2, columns);
 }
 
 
