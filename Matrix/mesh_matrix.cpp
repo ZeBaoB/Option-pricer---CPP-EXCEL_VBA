@@ -65,7 +65,8 @@ void mesh_matrix::solve(bool call, bool european, matrix_plf r_table, double sig
         Lmatrix(1, 1) = 1.0;
         Rmatrix(1, 1) = 1.0;
         Lmatrix(dim, dim) = 1.0;
-        Rmatrix(dim, dim) = 1.0;*/
+        Rmatrix(dim, dim) = 1.0;
+        */
 
         //Compute the coefficients of matrix
         for (int k = 2; k <= dim - 1; k++) {
@@ -85,12 +86,12 @@ void mesh_matrix::solve(bool call, bool european, matrix_plf r_table, double sig
         
 
         if (european) { // european call or put option
-            for (int k = 2; k <= dim - 1; ++k) {
+            for (int k = 1; k <= dim; ++k) {
                 matrix::operator()(i - 1, k) = Vi_1(k, 1);
             }
         }
         else { // american
-            for (int k = 2; k <= dim - 1; ++k) {
+            for (int k = 1; k <= dim; ++k) {
                 matrix::operator()(i - 1, k) = (Vi_1(k, 1) > coef * (get_sinf() * (k - 1) / (dim - 1) - get_K())) ? Vi_1(k, 1) : coef * (get_sinf() * (k - 1) / (dim - 1) - get_K());
             }
         }

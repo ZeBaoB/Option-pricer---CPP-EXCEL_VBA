@@ -32,7 +32,7 @@
     <ClCompile Include="Matrix.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="main function.cpp">
+    <ClCompile Include="Test.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="matrix_plf.cpp">

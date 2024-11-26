@@ -2,7 +2,6 @@
 #include <iostream>
 #include <vector>
 
-
 class matrix {
 private:
 	int M_; // Number of lines

@@ -133,7 +133,7 @@
     <ClInclude Include="mesh_matrix.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main function.cpp" />
+    <ClCompile Include="Test.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="matrix_plf.cpp" />
     <ClCompile Include="matrix_tridiagonal.cpp" />
