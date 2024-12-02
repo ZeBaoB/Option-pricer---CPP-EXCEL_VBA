@@ -49,7 +49,7 @@ matrix matrix_tridiagonal::gauss_saidel(matrix b, matrix x0) const {
 
     // Repetition for convergence
     const int max_iter = 1000; // Max number of iteration 
-    const double tol = 1e-8;   // Tollerance for convergence 
+    const double tol = 1e-12;   // Tollerance for convergence 
     for (int iter = 0; iter < max_iter; ++iter) {
         double max_diff = 0.0; // Difference between old and new x
 

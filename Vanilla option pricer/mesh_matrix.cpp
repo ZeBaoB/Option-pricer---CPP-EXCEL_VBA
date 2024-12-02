@@ -95,8 +95,8 @@ long double mesh_matrix::retrieve_OptionValue(long double s0, int line)
     int j1;
     int j2;
     j = 1.0 + s0 * (get_number_of_columns() - 1) / get_sinf();
-    j1 = std::floor(j);
-    j2 = std::floor(j) + 1;
+    j1 = static_cast<int>(std::floor(j));
+    j2 = static_cast<int>(std::floor(j) + 1);
 
     return matrix::operator()(line, j1) + (j - j1) * (matrix::operator()(line, j2) - matrix::operator()(line, j1));
 }
@@ -140,3 +140,4 @@ long double mesh_matrix::retrieve_vega(bool call, bool european, matrix_plf r_ta
 
     return (price2 - price1) / 1e-4;
 }
+

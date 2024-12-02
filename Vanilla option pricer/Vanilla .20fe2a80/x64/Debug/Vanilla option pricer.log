@@ -1,3 +1,16 @@
-﻿  Test.cpp
-     Création de la bibliothèque C:\Users\Billn\Documents\M2QF\C plus plus\Project\Vanilla option pricer\x64\Debug\Vanilla option pricer.lib et de l'objet C:\Users\Billn\Documents\M2QF\C plus plus\Project\Vanilla option pricer\x64\Debug\Vanilla option pricer.exp
-  Vanilla option pricer.vcxproj -> C:\Users\Billn\Documents\M2QF\C plus plus\Project\Vanilla option pricer\x64\Debug\Vanilla option pricer.dll
+﻿  pch.cpp
+  dllmain.cpp
+  matrix.cpp
+  matrix_plf.cpp
+  matrix_tridiagonal.cpp
+  mesh_matrix.cpp
+  pricer.cpp
+C:\Users\Giorgio\Documents\GitHub\Project-Cpp\Vanilla option pricer\pricer.cpp(7,8): warning C4273: 'computePriceAndPartialDerivates': collegamento dll non coerente
+  (compilazione del file di origine '/pricer.cpp')
+      C:\Users\Giorgio\Documents\GitHub\Project-Cpp\Vanilla option pricer\pricer.h(79,39):
+      vedi la precedente definizione di 'computePriceAndPartialDerivates'
+  
+  Test.cpp
+  Generazione del codice in corso...
+     Creazione della libreria C:\Users\Giorgio\Documents\GitHub\Project-Cpp\Vanilla option pricer\x64\Debug\Vanilla option pricer.lib e dell'oggetto C:\Users\Giorgio\Documents\GitHub\Project-Cpp\Vanilla option pricer\x64\Debug\Vanilla option pricer.exp
+  Vanilla option pricer.vcxproj -> C:\Users\Giorgio\Documents\GitHub\Project-Cpp\Vanilla option pricer\x64\Debug\Vanilla option pricer.dll
