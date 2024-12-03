@@ -115,7 +115,7 @@ long double mesh_matrix::retrieve_gamma(long double s0)
 
 long double mesh_matrix::retrieve_theta(long double s0)
 {
-    return (retrieve_OptionValue(s0) - retrieve_OptionValue(s0, 2)) / get_T() * (get_number_of_lines() - 1);
+    return ( retrieve_OptionValue(s0, 2) - retrieve_OptionValue(s0) ) / get_T() * (get_number_of_lines() - 1);
 }
 
 long double mesh_matrix::retrieve_rho(bool call, bool european, matrix_plf r_table, double sigma, long double s0)

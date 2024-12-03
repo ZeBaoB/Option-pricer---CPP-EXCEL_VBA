@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Giorgio\\Documents\\GitHub\\Project-Cpp\\Vanilla option pricer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{20FE2A80-2D96-4B22-B344-BC3874C117F0}|Vanilla option pricer.vcxproj|C:\\Users\\Giorgio\\Documents\\GitHub\\Project-Cpp\\Vanilla option pricer\\mesh_matrix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{20FE2A80-2D96-4B22-B344-BC3874C117F0}|Vanilla option pricer.vcxproj|solutionrelative:mesh_matrix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{20FE2A80-2D96-4B22-B344-BC3874C117F0}|Vanilla option pricer.vcxproj|C:\\Users\\Giorgio\\Documents\\GitHub\\Project-Cpp\\Vanilla option pricer\\pricer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{20FE2A80-2D96-4B22-B344-BC3874C117F0}|Vanilla option pricer.vcxproj|solutionrelative:pricer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{20FE2A80-2D96-4B22-B344-BC3874C117F0}|Vanilla option pricer.vcxproj|C:\\Users\\Giorgio\\Documents\\GitHub\\Project-Cpp\\Vanilla option pricer\\matrix_tridiagonal.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{20FE2A80-2D96-4B22-B344-BC3874C117F0}|Vanilla option pricer.vcxproj|solutionrelative:matrix_tridiagonal.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20FE2A80-2D96-4B22-B344-BC3874C117F0}|Vanilla option pricer.vcxproj|C:\\Users\\Giorgio\\Documents\\GitHub\\Project-Cpp\\Vanilla option pricer\\mesh_matrix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{20FE2A80-2D96-4B22-B344-BC3874C117F0}|Vanilla option pricer.vcxproj|solutionrelative:mesh_matrix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20FE2A80-2D96-4B22-B344-BC3874C117F0}|Vanilla option pricer.vcxproj|C:\\Users\\Giorgio\\Documents\\GitHub\\Project-Cpp\\Vanilla option pricer\\matrix.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -42,11 +42,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "matrix_tridiagonal.cpp",
               "DocumentMoniker": "C:\\Users\\Giorgio\\Documents\\GitHub\\Project-Cpp\\Vanilla option pricer\\matrix_tridiagonal.cpp",
               "RelativeDocumentMoniker": "matrix_tridiagonal.cpp",
@@ -54,12 +54,11 @@
               "RelativeToolTip": "matrix_tridiagonal.cpp",
               "ViewState": "AgIAACUAAAAAAAAAAAAAADMAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-02T23:05:55.129Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T23:05:55.129Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "matrix_tridiagonal.h",
               "DocumentMoniker": "C:\\Users\\Giorgio\\Documents\\GitHub\\Project-Cpp\\Vanilla option pricer\\matrix_tridiagonal.h",
               "RelativeDocumentMoniker": "matrix_tridiagonal.h",
@@ -67,8 +66,7 @@
               "RelativeToolTip": "matrix_tridiagonal.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-02T23:05:52.595Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T23:05:52.595Z"
             },
             {
               "$type": "Document",
@@ -80,18 +78,17 @@
               "RelativeToolTip": "matrix.h",
               "ViewState": "AgIAAG8AAAAAZmZmZmYkwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-02T22:41:09.41Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T22:41:09.41Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "pricer.cpp",
               "DocumentMoniker": "C:\\Users\\Giorgio\\Documents\\GitHub\\Project-Cpp\\Vanilla option pricer\\pricer.cpp",
               "RelativeDocumentMoniker": "pricer.cpp",
               "ToolTip": "C:\\Users\\Giorgio\\Documents\\GitHub\\Project-Cpp\\Vanilla option pricer\\pricer.cpp",
               "RelativeToolTip": "pricer.cpp",
-              "ViewState": "AgIAACIAAABAMzMzMzMrwDIAAABOAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-02T22:35:44.3Z",
               "EditorCaption": ""
@@ -106,8 +103,7 @@
               "RelativeToolTip": "mesh_matrix.h",
               "ViewState": "AgIAAB4AAAAAAAAAAABQPS8AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-02T22:32:29.775Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T22:32:29.775Z"
             },
             {
               "$type": "Document",
@@ -119,18 +115,17 @@
               "RelativeToolTip": "pch.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-02T22:01:24.776Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T22:01:24.776Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "mesh_matrix.cpp",
               "DocumentMoniker": "C:\\Users\\Giorgio\\Documents\\GitHub\\Project-Cpp\\Vanilla option pricer\\mesh_matrix.cpp",
               "RelativeDocumentMoniker": "mesh_matrix.cpp",
               "ToolTip": "C:\\Users\\Giorgio\\Documents\\GitHub\\Project-Cpp\\Vanilla option pricer\\mesh_matrix.cpp",
               "RelativeToolTip": "mesh_matrix.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAG0AAAAANDMzMzMbwIEAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-02T21:42:47.589Z",
               "EditorCaption": ""
@@ -145,8 +140,7 @@
               "RelativeToolTip": "Test.cpp",
               "ViewState": "AgIAAEwAAAAAMDMzMzMLwCcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-02T21:41:10.755Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T21:41:10.755Z"
             }
           ]
         }
