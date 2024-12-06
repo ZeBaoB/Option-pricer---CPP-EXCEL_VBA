@@ -2,19 +2,19 @@
 #include "mesh_matrix.h"
 #include <cmath>
 
-void mesh_matrix::solve(bool call, bool european, matrix_plf r_table,   long double  sigma) {
+void mesh_matrix::solve(bool call, bool european, matrix_plf r_table, long double  sigma) {
     unsigned int dim = get_number_of_columns();
     unsigned int nl = get_number_of_lines();
     matrix Vi(dim, 1);
     matrix Vi_1(dim, 1);
-      long double r;
-      long double ak;
-      long double bk;
-      long double ck;
-      long double sk;
-      long double dt = T_ / (nl - 1);
-      long double S_K; // S-K or K-S
-      long double  coef = call ? 1.0 : -1.0;
+    long double r;
+    long double ak;
+    long double bk;
+    long double ck;
+    long double sk;
+    long double dt = T_ / (nl - 1);
+    long double S_K; // S-K or K-S
+    long double  coef = call ? 1.0 : -1.0;
 
     //Set the boundary conditions of the mesh
     if (call) {
@@ -82,16 +82,16 @@ void mesh_matrix::solve(bool call, bool european, matrix_plf r_table,   long dou
             }
         }
         else { // american
-            for (unsigned int k = 1; k <= dim ; ++k) {
+            for (unsigned int k = 1; k <= dim; ++k) {
                 matrix::operator()(i - 1, k) = (Vi_1(k, 1) > coef * (get_sinf() * (k - 1) / (dim - 1) - get_K())) ? Vi_1(k, 1) : coef * (get_sinf() * (k - 1) / (dim - 1) - get_K());
             }
         }
     }
 }
 
-  long double mesh_matrix::retrieve_OptionValue(  long double s0, unsigned int line)
+long double mesh_matrix::retrieve_OptionValue(long double s0, unsigned int line)
 {
-      long double  j;
+    long double  j;
     unsigned int j1;
     unsigned int j2;
     j = 1.0 + s0 * (get_number_of_columns() - 1) / get_sinf();
@@ -101,43 +101,42 @@ void mesh_matrix::solve(bool call, bool european, matrix_plf r_table,   long dou
     return matrix::operator()(line, j1) + (j - j1) * (matrix::operator()(line, j2) - matrix::operator()(line, j1));
 }
 
-  long double  mesh_matrix::retrieve_delta(  long double s0)
+long double  mesh_matrix::retrieve_delta(long double s0)
 {
-      long double ds = get_sinf() / (get_number_of_columns() - 1);
+    long double ds = get_sinf() / (get_number_of_columns() - 1);
     return (retrieve_OptionValue(s0 + ds) - retrieve_OptionValue(s0 - ds)) / 2 / ds;
 }
 
-  long double mesh_matrix::retrieve_gamma(  long double s0)
+long double mesh_matrix::retrieve_gamma(long double s0)
 {
-      long double ds = get_sinf() / (get_number_of_columns() - 1);
+    long double ds = get_sinf() / (get_number_of_columns() - 1);
     return (retrieve_OptionValue(s0 + ds) + retrieve_OptionValue(s0 - ds) - 2 * retrieve_OptionValue(s0)) / ds / ds;
 }
 
-  long double mesh_matrix::retrieve_theta(  long double s0)
+long double mesh_matrix::retrieve_theta(long double s0)
 {
-    return ( retrieve_OptionValue(s0, 2) - retrieve_OptionValue(s0) ) / get_T() * (get_number_of_lines() - 1);
+    return (retrieve_OptionValue(s0, 2) - retrieve_OptionValue(s0)) / get_T() * (get_number_of_lines() - 1);
 }
 
-  long double mesh_matrix::retrieve_rho(bool call, bool european, matrix_plf r_table,   long double  sigma,   long double s0)
+long double mesh_matrix::retrieve_rho(bool call, bool european, matrix_plf r_table, long double  sigma, long double s0)
 {
-      long double price1 = retrieve_OptionValue(s0);
+    long double price1 = retrieve_OptionValue(s0);
     matrix_plf new_rtable = r_table.shift_value(1e-4);
     solve(call, european, new_rtable, sigma);
-      long double price2 = retrieve_OptionValue(s0);
+    long double price2 = retrieve_OptionValue(s0);
 
     solve(call, european, r_table, sigma);
 
     return (price2 - price1) / 1e-4;
 }
 
-  long double mesh_matrix::retrieve_vega(bool call, bool european, matrix_plf r_table,   long double  sigma,   long double s0)
+long double mesh_matrix::retrieve_vega(bool call, bool european, matrix_plf r_table, long double  sigma, long double s0)
 {
-      long double price1 = retrieve_OptionValue(s0);
+    long double price1 = retrieve_OptionValue(s0);
     solve(call, european, r_table, sigma + 1e-4);
-      long double price2 = retrieve_OptionValue(s0);
+    long double price2 = retrieve_OptionValue(s0);
 
     solve(call, european, r_table, sigma);
 
     return (price2 - price1) / 1e-4;
 }
-

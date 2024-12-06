@@ -22,7 +22,7 @@
  * @date November 2024
  */
 class matrix_plf :
-    public matrix
+	public matrix
 {
 private:
 	matrix::matrix;
@@ -47,7 +47,7 @@ public:
 	 * - Row 1 contains elements from `tab_t`.
 	 * - Row 2 contains elements from `tab_r`.
 	 */
-	matrix_plf(const  long double* tab_t, const  long double* tab_r, unsigned int numberOfPoints) : matrix(2, numberOfPoints) {
+	matrix_plf(const long double* tab_t, const long double* tab_r, unsigned int numberOfPoints) : matrix(2, numberOfPoints) {
 		// Directly access elements with 1-based indexing
 		for (unsigned int j = 1; j <= numberOfPoints; ++j) {
 			matrix::operator()(1, j) = tab_t[j - 1]; // Fill row 1 with `tab_t`
@@ -64,7 +64,7 @@ public:
 	 * - The value at the first time point if `t` is before the first date.
 	 * - The value at the last time point if `t` is after the last date.
 	 */
-	 long double operator()( long double t) const;
+	long double operator()(long double t) const;
 
 	/**
 	 * @brief Shifts all values in the matrix by a specified delta.
@@ -72,8 +72,8 @@ public:
 	 * @param delta The value by which to shift the risk-free rate.
 	 * @return A new `matrix_plf` object with all values shifted by `delta`.
 	 */
-	matrix_plf shift_value( long double delta);
-	
+	matrix_plf shift_value(long double delta);
+
 	/**
 	 * @brief Computes the discount rate between two time points.
 	 *
@@ -81,5 +81,5 @@ public:
 	 * @param T The end time.
 	 * @return The computed discount rate between `t` and `T`.
 	 */
-	 long double integral( long double t,  long double T) const;
+	long double integral(long double t, long double T) const;
 };

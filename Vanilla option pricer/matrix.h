@@ -32,8 +32,8 @@ public:
 	 * @details
 	 * Initializes the matrix with all elements set to 0.0.
 	 */
-	matrix(unsigned int nl,unsigned int nc) : M_(nl), N_(nc), data_(nl, std::vector< long double>(nc, 0.0)) {}
-	
+	matrix(unsigned int nl, unsigned int nc) : M_(nl), N_(nc), data_(nl, std::vector< long double>(nc, 0.0)) {}
+
 	/**
 	 * @brief Retrieves the number of rows in the matrix.
 	 *
@@ -73,7 +73,7 @@ public:
 	 * @param l The row index (1-based).
 	 * @param c The column index (1-based).
 	 * @return A reference to the matrix element at the specified position.
-	 * 
+	 *
 	 * @note Indices are assumed to start at 1 for this implementation.
 	 */
 	long double& operator()(unsigned int l, unsigned int c);

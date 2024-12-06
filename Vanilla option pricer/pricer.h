@@ -15,23 +15,23 @@
  */
 
  /**
-  * @fn VanillaOptionPricer  long double computePriceAndPartialDerivates(
-  *      long double* result,
-  *      long double* underlying,
-  *      long double* option_price,
-  *      long double* delta,
-  *      long double* exerciceBoundary,
+  * @fn VanillaOptionPricer double computePriceAndPartialDerivates(
+  *     long double* result,
+  *     long double* underlying,
+  *     long double* option_price,
+  *     long double* delta,
+  *     long double* exerciceBoundary,
   *     bool isCall,
   *     bool isEuropean,
-  *      long double maturity,
-  *      long double strike,
-  *     unsigned int time_mesh_params,
-  *     unsigned int spot_mesh_params,
-  *      long double S0,
-  *     const  long double* time_steps,
-  *     const  long double* r_values,
-  *     unsigned int size,
-  *      long double sigma)
+  *     long double maturity,
+  *     long double strike,
+  *     int time_mesh_params,
+  *     int spot_mesh_params,
+  *     double S0,
+  *     const long double* time_steps,
+  *     const long double* r_values,
+  *     int size,
+  *     double sigma)
   * 
  * @brief Defines the `computePriceAndPartialDerivates` function for pricing options and computing their partial derivatives.
  *
@@ -76,21 +76,21 @@
  * - The spot price and time grids are evenly spaced based on the parameters provided.
  * - The Greeks are computed at the specified spot price `S0` and along the spot price grid.
  */
-extern "C" VanillaOptionPricer  long double computePriceAndPartialDerivates(
-     long double* result,
-     long double* underlying,
-     long double* option_price,
-     long double* delta,
-     long double* exerciceBoundary,
+extern "C" VanillaOptionPricer long double computePriceAndPartialDerivates(
+    long double* result,
+    long double* underlying,
+    long double* option_price,
+    long double* delta,
+    long double* exerciceBoundary,
     bool isCall,
     bool isEuropean,
-     long double maturity,
-     long double strike,
+    long double maturity,
+    long double strike,
     unsigned int time_mesh_params,
     unsigned int spot_mesh_params,
-     long double S0,
-    const  long double* time_steps,  // Time steps array
-    const  long double* r_values,    // Corresponding interest rates array
+    long double S0,
+    const long double* time_steps,  // Time steps array
+    const long double* r_values,    // Corresponding interest rates array
     unsigned int size,              // Size of the r table (number of time steps)
-     long double sigma)
-;
+    long double sigma)
+    ;

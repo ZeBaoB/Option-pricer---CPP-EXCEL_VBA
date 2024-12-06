@@ -1,5 +1,4 @@
 #include "pch.h"
-#include "Matrix.h"
 #include "matrix_plf.h"
 #include "matrix_tridiagonal.h"
 #include "mesh_matrix.h"
@@ -9,35 +8,20 @@
 
 #include <chrono> // Pour mesurer le temps d'exécution
 
-/**
- * @file Test.cpp
- * @brief Code used to test the methods created and the accuracy of the algorithm
- *
- * @details
- * In order to validate the results we compare the numerical method with the explicit solution given by Black–Scholes formula in the case where r is constant.
- * We also verify the equivalence between american and european exercises for calls with r > 0 and for puts with r < 0.
- *
- * @authors
- * - Bill Njonze
- * - Giorgio Enrico Maria Serva
- *
- * @date November 2024
- */
-
-unsigned int main() {
+int main() {
 
     bool call = true;
     bool european = true;
-     long double maturity = 0.5;
-     long double s0 = 42.0;
-     long double k = 45.0;
-     long double tab_t[4]{ -0.1, 0.2, 0.3, 0.4 };
-     long double tab_r[4]{ 0.05, 0.05, 0.05, 0.05 };
-     long double sigma = 0.25;
+    long double maturity = 0.5;
+    long double s0 = 42.0;
+    long double k = 45.0;
+    long double tab_t[4]{ -0.1, 0.2, 0.3, 0.4 };
+    long double tab_r[4]{ 0.05, 0.05, 0.05, 0.05 };
+    long double sigma = 0.25;
     unsigned int spot_mesh_parameter = 250;
     unsigned int time_mesh_parameter = 250;
 
-     long double sinf = s0 * 3;
+    long double sinf = s0 * 3;
 
     matrix_plf returnTable = matrix_plf(tab_t, tab_r, 4);
 
@@ -62,10 +46,12 @@ unsigned int main() {
 
 
     std::cout << "European put option (spot_mesh_parameter = 250, time_mesh_parameter = 250) : \n";
+    call = false;
+    european = true;
     // Début de la mesure du temps
     start = std::chrono::high_resolution_clock::now();
     m_matrix = mesh_matrix(maturity, s0, k, spot_mesh_parameter, time_mesh_parameter, sinf);
-    m_matrix.solve(false, european, returnTable, sigma);
+    m_matrix.solve(call, european, returnTable, sigma);
     std::cout << "Computed Price : " << m_matrix.retrieve_OptionValue(s0) << " VS 4.06205 (the explicit solution)" << std::endl;
     std::cout << "Computed Delta : " << m_matrix.retrieve_delta(s0) << " VS -0.56375 (the explicit solution)" << std::endl;
     std::cout << "Computed Gamma : " << m_matrix.retrieve_gamma(s0) << " VS 0.05304 (the explicit solution)" << std::endl;
@@ -86,6 +72,7 @@ unsigned int main() {
     std::cout << "risk free rate at time = 0.30 : " << returnTable(0.30) << std::endl;
     std::cout << "-------------------------- Call ------------------------------------------------------------------------------------------------------------------------------------\n";
     std::cout << "-------------------------- Spot = 42, Strike = 45, Maturity = 6 mois, r =environ 0.45 (positive), sigma = 25% ------------------------------------------------------\n\n";
+    call = true;
 
     //---------------------------------------------------------------------------------------------------------------
     // Début de la mesure du temps
@@ -123,13 +110,13 @@ unsigned int main() {
     // Affichage du temps d'exécution
     std::cout << "Execution time: " << elapsed.count() << " seconds" << std::endl;
 
-
+    european = false;
     //---------------------------------------------------------------------------------------------------------------
     // Début de la mesure du temps
     start = std::chrono::high_resolution_clock::now();
     std::cout << "\nAmerican. spot_mesh_parameter = 300, time_mesh_parameter = 300 \n";
     m_matrix = mesh_matrix(maturity, s0, k, 300, 300, sinf);
-    m_matrix.solve(call, false, returnTable, sigma);
+    m_matrix.solve(call, european, returnTable, sigma);
     std::cout << "Price : " << m_matrix.retrieve_OptionValue(s0) << std::endl;
     std::cout << "Delta : " << m_matrix.retrieve_delta(s0) << std::endl;
     std::cout << "Gamma : " << m_matrix.retrieve_gamma(s0) << std::endl;
@@ -145,13 +132,15 @@ unsigned int main() {
 
     std::cout << "\n\n\n\n-------------------------- Put -------------------------------------------------------------------------------------------------------------------------------------\n";
     std::cout << "-------------------------- Spot = 42, Strike = 45, Maturity = 6 mois, r =environ 0.45 (positive), sigma = 25% ------------------------------------------------------\n\n";
+    call = false;
+    european = true;
 
     //---------------------------------------------------------------------------------------------------------------
     // Début de la mesure du temps
     start = std::chrono::high_resolution_clock::now();
     std::cout << "European. spot_mesh_parameter = 100, time_mesh_parameter = 100 \n";
     m_matrix = mesh_matrix(maturity, s0, k, 100, 100, sinf);
-    m_matrix.solve(false, true, returnTable, sigma);
+    m_matrix.solve(call, european, returnTable, sigma);
     std::cout << "Price : " << m_matrix.retrieve_OptionValue(s0) << std::endl;
     std::cout << "Delta : " << m_matrix.retrieve_delta(s0) << std::endl;
     std::cout << "Gamma : " << m_matrix.retrieve_gamma(s0) << std::endl;
@@ -167,8 +156,9 @@ unsigned int main() {
     // Début de la mesure du temps
     start = std::chrono::high_resolution_clock::now();
     std::cout << "\nAmerican. spot_mesh_parameter = 100, time_mesh_parameter = 100 \n";
+    european = false;
     m_matrix = mesh_matrix(maturity, s0, k, 100, 100, sinf);
-    m_matrix.solve(false, false, returnTable, sigma);
+    m_matrix.solve(call, european, returnTable, sigma);
     std::cout << "Price : " << m_matrix.retrieve_OptionValue(s0) << std::endl;
     std::cout << "Delta : " << m_matrix.retrieve_delta(s0) << std::endl;
     std::cout << "Gamma : " << m_matrix.retrieve_gamma(s0) << std::endl;
@@ -191,11 +181,12 @@ unsigned int main() {
 
     std::cout << "-------------------------- Call -------------------------------------------------------------------------------------------------------------------------------------\n";
     std::cout << "-------------------------- Spot = 42, Strike = 45, Maturity = 6 mois, r =environ -0.45 (negative), sigma = 25% ------------------------------------------------------\n\n";
-
+    call = true;
     //---------------------------------------------------------------------------------------------------------------
     // Début de la mesure du temps
     start = std::chrono::high_resolution_clock::now();
     std::cout << "\nEuropean. spot_mesh_parameter = 100, time_mesh_parameter = 100 \n";
+    european = true;
     m_matrix = mesh_matrix(maturity, s0, k, 100, 100, sinf);
     m_matrix.solve(call, european, returnTable, sigma);
     std::cout << "Price : " << m_matrix.retrieve_OptionValue(s0) << std::endl;
@@ -213,8 +204,9 @@ unsigned int main() {
     // Début de la mesure du temps
     start = std::chrono::high_resolution_clock::now();
     std::cout << "\nAmerican. spot_mesh_parameter = 100, time_mesh_parameter = 100 \n";
+    european = false;
     m_matrix = mesh_matrix(maturity, s0, k, 100, 100, sinf);
-    m_matrix.solve(call, false, returnTable, sigma);
+    m_matrix.solve(call, european, returnTable, sigma);
     std::cout << "Price : " << m_matrix.retrieve_OptionValue(s0) << std::endl;
     std::cout << "Delta : " << m_matrix.retrieve_delta(s0) << std::endl;
     std::cout << "Gamma : " << m_matrix.retrieve_gamma(s0) << std::endl;
@@ -230,13 +222,15 @@ unsigned int main() {
 
     std::cout << "\n\n\n\n-------------------------- Put -------------------------------------------------------------------------------------------------------------------------------------\n";
     std::cout << "-------------------------- Spot = 42, Strike = 45, Maturity = 6 mois, r =environ -0.45 (negative), sigma = 25% ------------------------------------------------------\n\n";
+    call = false;
 
     //---------------------------------------------------------------------------------------------------------------
     // Début de la mesure du temps
     start = std::chrono::high_resolution_clock::now();
     std::cout << "European. spot_mesh_parameter = 100, time_mesh_parameter = 100 \n";
+    european = true;
     m_matrix = mesh_matrix(maturity, s0, k, 100, 100, sinf);
-    m_matrix.solve(false, true, returnTable, sigma);
+    m_matrix.solve(call, european, returnTable, sigma);
     std::cout << "Price : " << m_matrix.retrieve_OptionValue(s0) << std::endl;
     std::cout << "Delta : " << m_matrix.retrieve_delta(s0) << std::endl;
     std::cout << "Gamma : " << m_matrix.retrieve_gamma(s0) << std::endl;
@@ -252,8 +246,9 @@ unsigned int main() {
     // Début de la mesure du temps
     start = std::chrono::high_resolution_clock::now();
     std::cout << "\nAmerican. spot_mesh_parameter = 100, time_mesh_parameter = 100 \n";
+    european = false;
     m_matrix = mesh_matrix(maturity, s0, k, 100, 100, sinf);
-    m_matrix.solve(false, false, returnTable, sigma);
+    m_matrix.solve(call, european, returnTable, sigma);
     std::cout << "Price : " << m_matrix.retrieve_OptionValue(s0) << std::endl;
     std::cout << "Delta : " << m_matrix.retrieve_delta(s0) << std::endl;
     std::cout << "Gamma : " << m_matrix.retrieve_gamma(s0) << std::endl;

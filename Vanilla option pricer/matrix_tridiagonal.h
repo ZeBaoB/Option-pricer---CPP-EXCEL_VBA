@@ -48,7 +48,7 @@ public:
 	 * - The superdiagonal (above the main diagonal) is filled with elements from `diagSup`.
 	 * - The subdiagonal (below the main diagonal) is filled with elements from `diagInf`.
 	 */
-	matrix_tridiagonal(unsigned int dim,   long double * diag,   long double * diagSup,   long double * diagInf) : matrix(dim, dim) {
+	matrix_tridiagonal(unsigned int dim, long double* diag, long double* diagSup, long double* diagInf) : matrix(dim, dim) {
 		matrix::operator()(1, 1) = diag[0];
 		for (unsigned int i = 2; i <= dim; ++i) {
 			matrix::operator()(i, i) = diag[i - 1];
@@ -69,7 +69,7 @@ public:
 	 * represented by the tridiagonal matrix and the vector `b`.
 	 */
 	matrix gauss_saidel(matrix b, matrix x0) const;
-	
+
 	/**
 	 * @brief Computes the inverse of the tridiagonal matrix.
 	 *
