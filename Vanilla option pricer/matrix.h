@@ -19,9 +19,9 @@
 
 class matrix {
 private:
-	int M_; ///< Number of rows in the matrix.
-	int N_; ///< Number of columns in the matrix.
-	std::vector< std::vector<long double> > data_; ///< Matrix data stored as a 2D vector.
+	unsigned int M_; ///< Number of rows in the matrix.
+	unsigned int N_; ///< Number of columns in the matrix.
+	std::vector< std::vector<  long double > > data_; ///< Matrix data stored as a 2D vector.
 public:
 	/**
 	 * @brief Constructs a matrix with specified dimensions.
@@ -32,21 +32,21 @@ public:
 	 * @details
 	 * Initializes the matrix with all elements set to 0.0.
 	 */
-	matrix(int nl, int nc) : M_(nl), N_(nc), data_(nl, std::vector<long double>(nc, 0.0)) {}
+	matrix(unsigned int nl,unsigned int nc) : M_(nl), N_(nc), data_(nl, std::vector< long double>(nc, 0.0)) {}
 	
 	/**
 	 * @brief Retrieves the number of rows in the matrix.
 	 *
 	 * @return The number of rows (`M_`).
 	 */
-	int get_number_of_lines() const { return M_; }
+	unsigned int get_number_of_lines() const { return M_; }
 
 	/**
 	* @brief Retrieves the number of columns in the matrix.
 	*
 	* @return The number of columns (`N_`).
 	*/
-	int get_number_of_columns() const { return N_; }
+	unsigned int get_number_of_columns() const { return N_; }
 
 	/**
 	 * @brief Overloads the assignment operator to copy another matrix.
@@ -65,7 +65,7 @@ public:
 	 *
 	 * @note Indices are assumed to start at 1 for this implementation.
 	 */
-	long double operator()(int l, int c) const;
+	long double operator()(unsigned int l, unsigned int c) const;
 
 	/**
 	 * @brief Accesses and modifies an element of the matrix.
@@ -76,7 +76,7 @@ public:
 	 * 
 	 * @note Indices are assumed to start at 1 for this implementation.
 	 */
-	long double& operator()(int l, int c);
+	long double& operator()(unsigned int l, unsigned int c);
 
 	/**
 	* @brief Fills a specified row with a given value.
@@ -85,7 +85,7 @@ public:
 	* @param alpha The value to fill the row with.
 	* @return A reference to the modified matrix.
 	*/
-	matrix& fill_line(int i, long double alpha);
+	matrix& fill_line(unsigned int i, long double alpha);
 
 	/**
 	 * @brief Fills a specified column with a given value.
@@ -94,7 +94,7 @@ public:
 	 * @param alpha The value to fill the column with.
 	 * @return A reference to the modified matrix.
 	 */
-	matrix& fill_column(int j, long double alpha);
+	matrix& fill_column(unsigned int j, long double alpha);
 
 	/**
 	 * @brief Adds a scaled row to another row.
@@ -106,7 +106,7 @@ public:
 	 *
 	 * @details Performs the operation: `row[i1] += alpha * row[i2]`.
 	 */
-	matrix& add_line_to_line(int i1, long double alpha, int i2); // line i1 <-- line i1 + alpha * line i2
+	matrix& add_line_to_line(unsigned int i1, long double alpha, unsigned int i2); // line i1 <-- line i1 + alpha * line i2
 };
 
 /**
@@ -116,7 +116,7 @@ public:
  * @param M1 The matrix to be scaled.
  * @return A new matrix representing the result of the scaling operation.
  */
-matrix operator*(const long double k, const matrix& M1);
+matrix operator*(const   long double k, const matrix& M1);
 
 /**
  * @brief Adds two matrices element-wise.

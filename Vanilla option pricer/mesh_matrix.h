@@ -24,10 +24,10 @@
 class mesh_matrix : public matrix {
 private:
     matrix::matrix;
-    double T_;    ///< Maturity time of the option.
-    double s0_;   ///< Initial spot price of the underlying asset.
-    double K_;    ///< Strike price of the option.
-    double sinf_; ///< Maximum spot price (boundary condition).
+     long double T_;    ///< Maturity time of the option.
+     long double s0_;   ///< Initial spot price of the underlying asset.
+     long double K_;    ///< Strike price of the option.
+     long double sinf_; ///< Maximum spot price (boundary condition).
 
 public:
     /**
@@ -44,7 +44,7 @@ public:
      * Initializes a `mesh_matrix` as a `time_mesh_parameter x spot_mest_parameter` grid.
      * The parameters define the financial and numerical characteristics of the option pricing problem.
      */
-    mesh_matrix(double T, double s0, double K, int spot_mest_parameter, int time_mesh_parameter, double sinf)
+    mesh_matrix( long double T,  long double s0,  long double K, unsigned int spot_mest_parameter, unsigned int time_mesh_parameter,  long double sinf)
         : matrix(time_mesh_parameter, spot_mest_parameter) {
         T_ = T;
         s0_ = s0;
@@ -57,28 +57,28 @@ public:
      *
      * @return The maturity time (`T_`).
      */
-    double get_T() { return T_; }
+      long double  get_T() { return T_; }
 
     /**
      * @brief Retrieves the initial spot price of the underlying asset.
      *
      * @return The initial spot price (`s0_`).
      */
-    double get_s0() { return s0_; }
+      long double  get_s0() { return s0_; }
 
     /**
      * @brief Retrieves the strike price of the option.
      *
      * @return The strike price (`K_`).
      */
-    double get_K() { return K_; }
+      long double  get_K() { return K_; }
 
     /**
      * @brief Retrieves the maximum spot price (boundary condition).
      *
      * @return The maximum spot price (`sinf_`).
      */
-    double get_sinf() { return sinf_; }
+    long double  get_sinf() { return sinf_; }
 
     /**
      * @brief Solves the option pricing model and populates the `mesh_matrix`.
@@ -88,7 +88,7 @@ public:
      * @param r_table A `matrix_plf` object representing the risk-free rate over time.
      * @param sigma The volatility of the underlying asset.
      */
-    void solve(bool call, bool european, matrix_plf r_table, double sigma);
+    void solve(bool call, bool european, matrix_plf r_table,   long double  sigma);
 
     /**
      * @brief Retrieves the option value at a specific spot price.
@@ -97,7 +97,7 @@ public:
      * @param line The time index (default is `1` for the initial time step).
      * @return The option value at the specified spot price and time index.
      */
-    long double retrieve_OptionValue(long double s0, int line = 1);
+    long double  retrieve_OptionValue( long double  s0, unsigned int line = 1);
 
     /**
      * @brief Retrieves the delta (sensitivity to spot price) of the option.
@@ -105,7 +105,7 @@ public:
      * @param s0 The spot price at which to compute the delta.
      * @return The delta value.
      */
-    long double retrieve_delta(long double s0);
+    long double  retrieve_delta( long double s0);
 
     /**
      * @brief Retrieves the gamma (sensitivity of delta to spot price) of the option.
@@ -113,7 +113,7 @@ public:
      * @param s0 The spot price at which to compute the gamma.
      * @return The gamma value.
      */
-    long double retrieve_gamma(long double s0);
+    long double retrieve_gamma(  long double s0);
 
     /**
      * @brief Retrieves the theta (sensitivity to time) of the option.
@@ -121,7 +121,7 @@ public:
      * @param s0 The spot price at which to compute the theta.
      * @return The theta value (rate of change of option value with respect to time).
      */
-    long double retrieve_theta(long double s0);
+      long double retrieve_theta(  long double s0);
 
     /**
      * @brief Retrieves the rho (sensitivity to interest rate) of the option.
@@ -133,7 +133,7 @@ public:
      * @param s0 The spot price at which to compute rho.
      * @return The rho value.
      */
-    long double retrieve_rho(bool call, bool european, matrix_plf r_table, double sigma, long double s0);
+      long double retrieve_rho(bool call, bool european, matrix_plf r_table,  long double sigma,   long double s0);
 
     /**
      * @brief Retrieves the vega (sensitivity to volatility) of the option.
@@ -145,5 +145,5 @@ public:
      * @param s0 The spot price at which to compute vega.
      * @return The vega value.
      */
-    long double retrieve_vega(bool call, bool european, matrix_plf r_table, double sigma, long double s0);
+      long double retrieve_vega(bool call, bool european, matrix_plf r_table,  long double sigma,   long double s0);
 };

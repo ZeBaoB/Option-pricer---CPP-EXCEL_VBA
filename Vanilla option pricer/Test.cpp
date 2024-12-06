@@ -24,20 +24,20 @@
  * @date November 2024
  */
 
-int main() {
+unsigned int main() {
 
     bool call = true;
     bool european = true;
-    double maturity = 0.5;
-    double s0 = 42.0;
-    double k = 45.0;
-    double tab_t[4]{ -0.1, 0.2, 0.3, 0.4 };
-    double tab_r[4]{ 0.05, 0.05, 0.05, 0.05 };
-    double sigma = 0.25;
-    int spot_mesh_parameter = 250;
-    int time_mesh_parameter = 250;
+     long double maturity = 0.5;
+     long double s0 = 42.0;
+     long double k = 45.0;
+     long double tab_t[4]{ -0.1, 0.2, 0.3, 0.4 };
+     long double tab_r[4]{ 0.05, 0.05, 0.05, 0.05 };
+     long double sigma = 0.25;
+    unsigned int spot_mesh_parameter = 250;
+    unsigned int time_mesh_parameter = 250;
 
-    double sinf = s0 * 3;
+     long double sinf = s0 * 3;
 
     matrix_plf returnTable = matrix_plf(tab_t, tab_r, 4);
 
@@ -56,7 +56,7 @@ int main() {
     std::cout << "Computed Vega : " << m_matrix.retrieve_vega(call, european, returnTable, sigma, s0) << " VS 11.69641 (the explicit solution)" << std::endl;
     // Fin de la mesure du temps
     auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsed = end - start;
+    std::chrono::duration< long double> elapsed = end - start;
     // Affichage du temps d'exécution
     std::cout << "Execution time: " << elapsed.count() << " seconds" << std::endl << std::endl << std::endl;
 
@@ -185,7 +185,7 @@ int main() {
 
     //Negative r
     std::cout << "\n\n\n\n-------------------------- Negative risk free interest rate  -----------------------------------------------------------------------------------------------------\n\n";
-    for (int i = 1; i <= 4; ++i) { returnTable.matrix::operator()(2, i) *= -1; }
+    for (unsigned int i = 1; i <= 4; ++i) { returnTable.matrix::operator()(2, i) *= -1; }
     std::cout << "\n\nrisk free rate at time = 0.025 : " << returnTable(0.25) << std::endl << std::endl;
 
 

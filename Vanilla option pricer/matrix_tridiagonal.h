@@ -32,7 +32,7 @@ public:
 	 * @details
 	 * Initializes the matrix as a square matrix of size `dim x dim` with all elements set to zero.
 	 */
-	matrix_tridiagonal(int dim) : matrix(dim, dim) {};
+	matrix_tridiagonal(unsigned int dim) : matrix(dim, dim) {};
 
 	/**
 	 * @brief Constructs a tridiagonal matrix with specified diagonals.
@@ -48,9 +48,9 @@ public:
 	 * - The superdiagonal (above the main diagonal) is filled with elements from `diagSup`.
 	 * - The subdiagonal (below the main diagonal) is filled with elements from `diagInf`.
 	 */
-	matrix_tridiagonal(int dim, double* diag, double* diagSup, double* diagInf) : matrix(dim, dim) {
+	matrix_tridiagonal(unsigned int dim,   long double * diag,   long double * diagSup,   long double * diagInf) : matrix(dim, dim) {
 		matrix::operator()(1, 1) = diag[0];
-		for (int i = 2; i <= dim; ++i) {
+		for (unsigned int i = 2; i <= dim; ++i) {
 			matrix::operator()(i, i) = diag[i - 1];
 			matrix::operator()(i - 1, i) = diagSup[i - 2];
 			matrix::operator()(i, i - 1) = diagInf[i - 2];
